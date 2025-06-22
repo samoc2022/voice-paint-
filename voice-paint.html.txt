@@ -1,0 +1,146 @@
+voice-paint.html
+
+<!DOCTYPE html>
+<!--
+  Voice Paint App
+  © 2025 Mini Moods Media. All rights reserved.
+  This application and its source code are owned by Mini Moods Media.
+  Unauthorized copying, distribution, or reproduction of any part of this app
+  without prior written permission is strictly prohibited.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voice Paint</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+    .welcome {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 20px;
+      background: #fff;
+      padding: 15px 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .welcome img {
+      width: 60px;
+      height: 60px;
+    }
+    canvas {
+      border: 2px solid black;
+      background: white;
+    }
+    button, input[type="file"], input[type="text"] {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    #teacher-tools {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      background: #fff;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      margin-top: 10px;
+      width: 80%;
+    }
+    #gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    #gallery img {
+      width: 100px;
+      height: auto;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="welcome">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Emoji_u1f5e3.svg/1200px-Emoji_u1f5e3.svg.png" alt="Speaking mouth logo" />
+    <h2>Welcome to Voice Paint</h2>
+  </div>
+
+  <canvas id="canvas" width="500" height="400"></canvas>
+  <div>
+    <button onclick="startListening()">🎤 Start Voice Painting</button>
+    <button onclick="startSoundDetection()">🔊 Sound-Based Drawing</button>
+    <button onclick="saveArtwork()">💾 Save Artwork</button>
+    <input type="file" id="upload" accept="image/*" onchange="uploadArtwork(event)" />
+    <button onclick="shareArtwork()">📲 Share via Bluetooth / Nearby</button>
+    <button onclick="toggleTeacherMode()">🎓 Teacher Mode</button>
+  </div>
+
+  <div id="teacher-tools">
+    <h3>👩‍🏫 Teacher Tools</h3>
+    <input type="text" id="studentName" placeholder="Enter student name" />
+    <button onclick="saveWithLabel()">💾 Save Artwork with Student Name</button>
+    <button onclick="printCertificate()">🏆 Print Certificate</button>
+    <button onclick="showPrompt()">🎨 New Art Prompt</button>
+    <p id="promptText" style="font-style: italic;"></p>
+    <h4>🖼️ Session Gallery</h4>
+    <div id="gallery"></div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const teacherTools = document.getElementById("teacher-tools");
+    const gallery = document.getElementById("gallery");
+    const promptText = document.getElementById("promptText");
+
+    const prompts = [
+      "Draw your dream house",
+      "Paint your favorite animal",
+      "Draw a magical tree",
+      "Paint how you're feeling today",
+      "Design a new planet",
+      "Draw your best friend as a superhero",
+      "Create your own flag",
+      "Paint your happy place"
+    ];
+
+    function drawShape(command) {
+      const words = command.toLowerCase();
+      if (words.includes("background")) {
+        const color = words.split(" ").pop();
+        ctx.fillStyle = color;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      } else if (words.includes("circle")) {
+        const color = words.includes("red") ? "red" : words.includes("blue") ? "blue" : "black";
+        ctx.fillStyle = color;
+        ctx.b
+
+© 2025 Mini Moods Media. All rights reserved.
+
+This software and its contents are protected by copyright laws.
+
+You may not copy, distribute, reproduce, or modify any part of this application
+without prior written permission from Mini Moods Media.
+
+This includes but is not limited to: the application design, voice/sound drawing logic,
+teacher mode functionality, artwork prompts, and any related branding such as
+“Voice Paint” and “Mini Moods Media.”
+
+This application is provided for educational, creative, and personal use only.
+
+For licensing, educational partnerships, or collaboration inquiries,
+please contact: [your email address or website]
+
