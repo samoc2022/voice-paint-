@@ -128,19 +128,3 @@ voice-paint.html
         ctx.fillStyle = color;
         ctx.b
 
-© 2025 Mini Moods Media. All rights reserved.
-
-This software and its contents are protected by copyright laws.
-
-You may not copy, distribute, reproduce, or modify any part of this application
-without prior written permission from Mini Moods Media.
-
-This includes but is not limited to: the application design, voice/sound drawing logic,
-teacher mode functionality, artwork prompts, and any related branding such as
-“Voice Paint” and “Mini Moods Media.”
-
-This application is provided for educational, creative, and personal use only.
-
-For licensing, educational partnerships, or collaboration inquiries,
-please contact: [your email address or website]
-
